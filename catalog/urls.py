@@ -1,5 +1,5 @@
 from django.urls import path
-from . import viewsgity
+from . import views
 
 
 urlpatterns = [
