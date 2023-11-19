@@ -1,8 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.core.validators import RegexValidator, MinLengthValidator
-from django.core.validators import FileExtensionValidator, ImageFileValidator
-
+from django.core.validators import RegexValidator, MinLengthValidator, FileExtensionValidator
 class User(AbstractUser):
     initials = models.CharField(max_length = 64)
     login = models.CharField(
@@ -28,7 +26,7 @@ class User(AbstractUser):
     )
     password  = models.CharField(
         max_length=16,
-        validators=[MinLengthValidator(8, message='The field must be at least 8 characters long.')]
+        validators=[MinLengthValidator(5, message='The field must be at least 5 characters long.')]
     )
     is_superadmin = models.BooleanField(default=False)
     def str(self):
@@ -41,7 +39,7 @@ class Project(models.Model):
         upload_to='project_images/',
         validators = [
             FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'bmp']),
-            ImageFileValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'bmp'])
+
         ]
     )
 
@@ -67,6 +65,6 @@ class Project(models.Model):
         ('sk', 'Sketch'),
         ('ar', 'Architectural Rendering'),
     )
-    project_category = models.CharField(max_length=1, choices=PROJECT_CATEGORY)
+    project_category = models.CharField(max_length=2, choices=PROJECT_CATEGORY)
     def __str__(self):
         return self.title
