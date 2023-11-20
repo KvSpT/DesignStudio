@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <title>DesignStudio - Главная страница</title>
+</head>
+<body>
+
+<header>
+    <h1>Добро пожаловать в DesignStudio</h1>
+</header>
+
+<section class="project-stats">
+    <h2>Статистика проектов</h2>
+    <p>Количество работающих проектов: {{ num_working_projects }}</p>
+</section>
+
+<section class="new-projects">
+    <h2>Новые проекты</h2>
+    <ul>
+        {% for project in new_projects %}
+            <li>{{ project.title }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<footer>
+    <p>&copy; 2023 DesignStudio</p>
+</footer>
+
+</body>
+</html>
