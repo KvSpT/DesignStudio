@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <title>Личный кабинет - DesignStudio</title>
+</head>
+<body>
+
+<header>
+    <h1>Личный кабинет</h1>
+</header>
+
+<section class="user-profile">
+    <h2>Профиль пользователя</h2>
+    <p>Инициалы: {{ user.initials }}</p>
+    <p>Логин: {{ user.login }}</p>
+    <p>Email: {{ user.email }}</p>
+</section>
+
+<section class="user-requests">
+    <h2>Мои заявки</h2>
+    {% if user.requests.all %}
+        <ul>
+            {% for request in user.requests.all %}
+                <li>
+                    <strong>Тема:</strong> {{ request.subject }}<br>
+                    <strong>Описание:</strong> {{ request.description }}<br>
+                    <!-- Добавьте другие поля, которые вы хотите отображать -->
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>У вас нет заявок.</p>
+    {% endif %}
+</section>
+
+<footer>
+    <p>&copy; 2023 DesignStudio</p>
+</footer>
+
+</body>
+</html>

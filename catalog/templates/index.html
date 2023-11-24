@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +26,11 @@
             <li>{{ project.title }}</li>
         {% endfor %}
     </ul>
+ </section>
+
+<section class="auth-buttons">
+    <a href="{% url 'login' %}">Войти</a>
+    <a href="{% url 'registration' %}">Зарегистрироваться</a>
 </section>
 
 <footer>
